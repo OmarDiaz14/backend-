@@ -39,6 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'cuadro',
+    'ficha_tecnica',
+
     
 
 ]
@@ -80,7 +82,7 @@ WSGI_APPLICATION = 'lga.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'test',
+        'NAME': 'lga',
         'USER': 'postgres',
         'PASSWORD': 'admin',
         'HOST': 'localhost',
