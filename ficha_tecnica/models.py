@@ -1,4 +1,5 @@
 from django.db import models
+from cuadro.models import Seccion, Series, SubSerie
 
 # Create your models here.
 
@@ -10,7 +11,7 @@ class FichaTecnica(models.Model):
     soporte_docu = models.CharField(max_length=250)
     id_seccion = models.ForeignKey('cuadro.Seccion', models.DO_NOTHING, blank=True, null=True)
     id_serie = models.ForeignKey('cuadro.Series', models.DO_NOTHING,blank= True, null= True)
-    id_subserie = models.ForeignKey('cuadro.SubSerie', models.DO_NOTHING)
+    id_subserie = models.ForeignKey('cuadro.SubSerie', models.DO_NOTHING,blank= True, null= True)
 
 
 

@@ -13,10 +13,10 @@ class SeccionSerializer(serializers.ModelSerializer):
 class SerieSerializer(serializers.ModelSerializer):
     class Meta:
         model = Series
-        fields = ('id_serie', 'serie', 'codigo_serie','descripcion')
+        fields = ('id_serie', 'serie', 'codigo_serie','descripcion','id_seccion')
 
 
 class SubSerieSerializer(serializers.ModelSerializer):
     class Meta:
         model = SubSerie
-        fields = ('SubSerie', 'descripcion')
+        fields = ('SubSerie', 'descripcion','id_serie')
