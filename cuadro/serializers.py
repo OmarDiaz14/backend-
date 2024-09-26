@@ -15,8 +15,12 @@ class SerieSerializer(serializers.ModelSerializer):
         model = Series
         fields = ('id_serie', 'serie', 'codigo_serie','descripcion','id_seccion')
 
+    id_seccion = serializers.PrimaryKeyRelatedField(queryset=Seccion.objects.all(), required=True)
+
 
 class SubSerieSerializer(serializers.ModelSerializer):
     class Meta:
         model = SubSerie
         fields = ('SubSerie', 'descripcion','id_serie')
+    
+    id_serie = serializers.PrimaryKeyRelatedField(queryset=Series.objects.all(), required = True)
