@@ -48,6 +48,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'rest_framework.authtoken',
+    'user',
     'cuadro',
     'ficha_tecnica',
 
@@ -93,10 +95,8 @@ WSGI_APPLICATION = 'lga.wsgi.application'
 
 DATABASES = {
     'default': dj_database_url.config (
-        default='postgresql://test_bj1n_user:u9pkgfgrnvzo3Pd85CbSp7qSnmrDPF8f@dpg-crmsuh5umphs739k9sdg-a.oregon-postgres.render.com/test_bj1n',
+        default='postgresql://lga_2_user:tGchX3OpYyBRFLHsQ5991f78dZmm7Yla@dpg-crq938m8ii6s73crbmi0-a.oregon-postgres.render.com/lga_2',
         conn_max_age=600)
-
-
 }
 
 
@@ -144,3 +144,5 @@ if not DEBUG:
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+AUTH_USER_MODEL = 'user.User'
