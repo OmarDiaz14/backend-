@@ -23,5 +23,6 @@ urlpatterns = [
     path('cuadro/', include('cuadro.urls')),
     path('ficha_tec/', include('ficha_tecnica.urls')),
     path('catalogo/', include('catalogo.urls')),
+    path('guia_docu/', include('guia.urls')),
     path('',include('user.urls'))
 ]

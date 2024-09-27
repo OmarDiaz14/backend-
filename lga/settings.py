@@ -53,7 +53,7 @@ INSTALLED_APPS = [
     'cuadro',
     'ficha_tecnica',
     'catalogo',
-
+    'guia',
     
 
 ]
