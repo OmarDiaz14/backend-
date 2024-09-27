@@ -53,8 +53,12 @@ INSTALLED_APPS = [
     'cuadro',
     'ficha_tecnica',
     'catalogo',
+<<<<<<< HEAD
     'portada',
 
+=======
+    'guia',
+>>>>>>> 28d1e95d3ca18dda8668b6e25562cc16fd0783d0
     
 
 ]
