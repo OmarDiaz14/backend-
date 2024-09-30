@@ -27,7 +27,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get('SECRET_KEY', default='your secret key') #Es esta es llave dinamica que 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-#DEBUG = True por que no esta en ambiente de desarrollo y si no esta en ambiente de desarrollo todos los pueden ver 
+#DEBUG = True #por que no esta en ambiente de desarrollo y si no esta en ambiente de desarrollo todos los pueden ver 
 DEBUG = 'RENDER' not in os.environ
 
 ALLOWED_HOSTS = []
@@ -49,7 +49,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'rest_framework.authtoken',
-    'corsheaders'
+    'corsheaders',
     'user',
     'cuadro',
     'ficha_tecnica',
@@ -63,13 +63,14 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
-    'corsheaders.CorsMiddleware',
+
 
 ]
 
@@ -79,8 +80,11 @@ REST_FRAMEWORK = {
         'rest_framework.permission.AllowAny'
     ]
 }
+
 #CORS_ALLOWED_ORIGINS = True
 CORS_ALLOWED_ORIGINS = ["http://localhost:5173"]
+
+
 
 ROOT_URLCONF = 'lga.urls'
 

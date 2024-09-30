@@ -27,3 +27,5 @@ urlpatterns = [
     path ('portada/', include('portada.urls')),
     path('guia_docu/', include('guia.urls'))
 ]
+
+
