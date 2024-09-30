@@ -13,9 +13,15 @@ class portada (models.Model):
     fecha_cierre = models.DateField(null= True)
     archivo_tramite = models.CharField(max_length=50)
     archivo_concentracion = models.CharField(max_length=50)
-    soporte_docu = models.CharField(max_length=150)
     seccion = models.ForeignKey('cuadro.Seccion', models.DO_NOTHING, null= True, blank= True)
     serie = models.ForeignKey('cuadro.Series', models.DO_NOTHING, null= True, blank=True)
     subserie = models.ForeignKey('cuadro.Subserie', models.DO_NOTHING, null = True, blank=True )
+    ficha = models.ForeignKey('ficha_tecnica.FichaTecnica', models.DO_NOTHING, null= True, blank= True )
 
 
+    @property
+    def  soporte_docu(self):
+        if self.ficha:  
+            return self.ficha.soporte_docu
+        else:
+            return None

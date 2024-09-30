@@ -9,6 +9,7 @@ class portadaSerializer (serializers.ModelSerializer):
         model = portada
         fields = ['id_expediente', 'num_expediente','asunto', 'num_legajos', 'num_fojas' ,
                    'valores_secundarios','fecha_apertura', 'fecha_cierre', 'archivo_tramite', 
-                   'archivo_concentracion', 'soporte_docu' , 'seccion','serie']
+                   'archivo_concentracion','seccion','serie','ficha', 'soporte_docu']
     seccion = serializers.PrimaryKeyRelatedField(queryset=Seccion.objects.all(), required=True)
     serie = serializers.PrimaryKeyRelatedField(queryset=Series.objects.all(), required=True)
+    ficha = serializers.PrimaryKeyRelatedField(queryset=FichaTecnica.objects.all(),required =True )
