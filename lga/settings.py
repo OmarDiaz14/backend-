@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'rest_framework.authtoken',
+    'corsheaders'
     'user',
     'cuadro',
     'ficha_tecnica',
@@ -68,8 +69,19 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
+    'coresheaders.middleware.CorsMiddleware',
 
 ]
+
+
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSIONS_CLASSES':[
+        'rest_framework.permission.AllowAny'
+    ]
+}
+#CORS_ALLOWED_ORIGINS = True
+
+CORS_ALLOWED_ORIGINS = ["http://localhost:5173"]
 
 ROOT_URLCONF = 'lga.urls'
 
@@ -149,4 +161,3 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = 'user.User'
 
-CORS_ALLOWED_ORIGINS = ["http://localhost:5173"]

@@ -23,7 +23,7 @@ urlpatterns = [
     path('cuadro/', include('cuadro.urls')),
     path('ficha_tec/', include('ficha_tecnica.urls')),
     path('catalogo/', include('catalogo.urls')),
-    path('usarios',include('user.urls')),
+    path('users',include('user.urls')),
     path ('portada/', include('portada.urls')),
     path('guia_docu/', include('guia.urls'))
 ]
