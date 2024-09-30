@@ -69,7 +69,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
-    'coresheaders.middleware.CorsMiddleware',
+    'corsheaders.CorsMiddleware',
 
 ]
 
@@ -80,7 +80,6 @@ REST_FRAMEWORK = {
     ]
 }
 #CORS_ALLOWED_ORIGINS = True
-
 CORS_ALLOWED_ORIGINS = ["http://localhost:5173"]
 
 ROOT_URLCONF = 'lga.urls'
