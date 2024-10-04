@@ -21,6 +21,6 @@ class SerieSerializer(serializers.ModelSerializer):
 class SubSerieSerializer(serializers.ModelSerializer):
     class Meta:
         model = SubSerie
-        fields = ('SubSerie', 'descripcion','id_serie')
+        fields = ('SubSerie', 'descripcion','serie')
     
-    id_serie = serializers.PrimaryKeyRelatedField(queryset=Series.objects.all(), required = True)
+    serie = serializers.PrimaryKeyRelatedField(queryset=Series.objects.all(), required = True)
