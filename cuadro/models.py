@@ -20,7 +20,7 @@ class Series(models.Model):
 
 
 class SubSerie(models.Model):
-    SubSerie = models.CharField(max_length=150, primary_key= True)
+    SubSerie = models.CharField(max_length=150,primary_key=True)
     descripcion = models.TextField()
     serie = models.ForeignKey('Series', models.DO_NOTHING,blank= True, null= True)
     
