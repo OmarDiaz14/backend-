@@ -17,7 +17,7 @@ class portada (models.Model):
     serie = models.ForeignKey('cuadro.Series', models.DO_NOTHING, null= True, blank=True)
     subserie = models.ForeignKey('cuadro.Subserie', models.DO_NOTHING, null = True, blank=True )
     ficha = models.ForeignKey('ficha_tecnica.FichaTecnica', models.DO_NOTHING, null= True, blank= True )
-    catalogo = models.ForeignKey('catalogo.Catalogo', models.DO_NOTHING, null= True)
+    catalogo = models.ForeignKey('catalogo.Catalogo', models.DO_NOTHING, null= True, blank= True)
 
 
     @property
@@ -30,19 +30,19 @@ class portada (models.Model):
     @property 
     def destino(self):
         if self.catalogo:
-            return self.catalogo.destino
+            return self.catalogo.destino_expe.destino
         else:
             return None
     @property
     def valor(self):
         if self.catalogo:
-            return self.catalogo.valor
+            return self.catalogo.valores_documentales.valores
         else:
             return None
         
     @property
     def type(self):
         if self.catalogo:
-            return self.catalogo.type
+            return self.catalogo.type.type_access
         else:
             return None
