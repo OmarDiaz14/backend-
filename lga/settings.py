@@ -55,7 +55,8 @@ INSTALLED_APPS = [
     'ficha_tecnica',
     'catalogo',
     'portada',
-    'guia'
+    'guia',
+    'inventario'
     
 
 ]
@@ -111,9 +112,14 @@ WSGI_APPLICATION = 'lga.wsgi.application'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
 DATABASES = {
-    'default': dj_database_url.config (
-        default='postgresql://lga_2_user:tGchX3OpYyBRFLHsQ5991f78dZmm7Yla@dpg-crq938m8ii6s73crbmi0-a.oregon-postgres.render.com/lga_2',
-        conn_max_age=600)
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'DB_LGA',
+        'USER': 'postgres',
+        'PASSWORD': 'pou123911',
+        'HOST': 'localhost',
+        'PORT':'5432',
+    }
 }
 
 
