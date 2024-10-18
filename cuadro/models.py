@@ -15,12 +15,12 @@ class Series(models.Model):
     serie = models.CharField(max_length=150, primary_key=True)
     codigo_serie= models.TextField()
     descripcion = models.TextField()
-    id_seccion = models.ForeignKey('Seccion', models.DO_NOTHING, db_column='seccion', blank=True, null=True)
+    id_seccion = models.ForeignKey('Seccion', on_delete=models.CASCADE, db_column='seccion', blank=True, null=True)
        
 
 
 class SubSerie(models.Model):
     SubSerie = models.CharField(max_length=150,primary_key=True)
     descripcion = models.TextField()
-    serie = models.ForeignKey('Series', models.DO_NOTHING,blank= True, null= True)
+    serie = models.ForeignKey('Series', on_delete=models.CASCADE,blank= True, null= True)
     

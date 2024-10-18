@@ -3,21 +3,27 @@ from django.db import models
 # Create your models here.
 
 class portada (models.Model):
+
+    Valor = [
+        ('informativo', 'Informativo'),
+        ('evidencial', 'Evidencia'),
+        ('testimonial', 'Testimonial'),
+    ]
+
     id_expediente = models.AutoField (primary_key= True)
     num_expediente = models.CharField(max_length=150)
     asunto = models.CharField(max_length=150)
     num_legajos = models.PositiveBigIntegerField(default=0)
     num_fojas = models.PositiveBigIntegerField(default=0)
-    valores_secundarios = models.CharField(max_length=150)
+    valores_secundarios = models.CharField(max_length=15, choices=Valor, default='informativo')
     fecha_apertura = models.DateField(null=False)
     fecha_cierre = models.DateField(null= True)
-    archivo_tramite = models.CharField(max_length=50)
-    archivo_concentracion = models.CharField(max_length=50)
-    seccion = models.ForeignKey('cuadro.Seccion', models.DO_NOTHING, null= True, blank= True)
-    serie = models.ForeignKey('cuadro.Series', models.DO_NOTHING, null= True, blank=True)
-    subserie = models.ForeignKey('cuadro.Subserie', models.DO_NOTHING, null = True, blank=True )
-    ficha = models.ForeignKey('ficha_tecnica.FichaTecnica', models.DO_NOTHING, null= True, blank= True )
-    catalogo = models.ForeignKey('catalogo.Catalogo', models.DO_NOTHING, null= True, blank= True)
+    seccion = models.ForeignKey('cuadro.Seccion',on_delete=models.CASCADE, null= True, blank= True)
+    serie = models.ForeignKey('cuadro.Series', on_delete=models.CASCADE, null= True, blank=True)
+    subserie = models.ForeignKey('cuadro.Subserie', on_delete=models.CASCADE, null = True, blank=True )
+    ficha = models.ForeignKey('ficha_tecnica.FichaTecnica', on_delete=models.CASCADE, null= True, blank= True )
+    catalogo = models.ForeignKey('catalogo.Catalogo', on_delete=models.CASCADE, null= True, blank= True)
+
 
 
     @property
@@ -43,6 +49,20 @@ class portada (models.Model):
     @property
     def type(self):
         if self.catalogo:
-            return self.catalogo.type.type_access
+            return self.catalogo.type_access.type
+        else:
+            return None
+        
+    @property
+    def archivo_tramite(self):
+        if self.catalogo:
+            return self.catalogo.archivo_tramite.archivo_tramite
+        else:
+            return None
+        
+    @property
+    def archivo_concentracion(self):
+        if self.catalogo:
+            return self.catalogo.archivo_concentracion.archivo_concentracion
         else:
             return None

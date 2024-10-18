@@ -8,9 +8,9 @@ class GuiaDocu(models.Model):
     descripcion = models.CharField(max_length=100, blank=True, null=True)
     volumen = models.IntegerField()
     ubicacion_fisica = models.CharField(max_length=100)
-    serie = models.ForeignKey('cuadro.Series', models.DO_NOTHING,blank= False, null= True)
-    seccion = models.ForeignKey('cuadro.Seccion', models.DO_NOTHING,blank=  False, null= True)
-    num_expediente = models.ForeignKey('portada.portada', models.DO_NOTHING, blank= False, null= True)
+    serie = models.ForeignKey('cuadro.Series', on_delete=models.CASCADE,blank= False, null= True)
+    seccion = models.ForeignKey('cuadro.Seccion', on_delete=models.CASCADE,blank=  False, null= True)
+    num_expediente = models.ForeignKey('portada.portada', on_delete=models.CASCADE, blank= False, null= True)
 
     @property
     def fecha_inicio(self):

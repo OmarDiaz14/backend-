@@ -2,7 +2,7 @@ from django.shortcuts import render
 from rest_framework import viewsets, permissions
 from .serializers import portadaSerializer
 from .models import portada
-from ficha_tecnica.models import FichaTecnica
+from rest_framework.permissions import IsAuthenticated
 
 # Create your views here.
 
@@ -10,5 +10,5 @@ from ficha_tecnica.models import FichaTecnica
 
 class PortadaViewSet (viewsets.ModelViewSet):
     queryset = portada.objects.all()
-    permission_classes = [permissions.AllowAny]
+    permission_classes = [IsAuthenticated]
     serializer_class = portadaSerializer

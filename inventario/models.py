@@ -5,10 +5,10 @@ from django.db import models
 
 class Inventario(models.Model):
     num_consecutivo = models.AutoField(primary_key=True)
-    serie = models.ForeignKey('cuadro.Series', models.DO_NOTHING, null= True, blank=True)
+    serie = models.ForeignKey('cuadro.Series', on_delete=models.CASCADE, null= True, blank=True)
     descripsion = models.CharField(max_length=250) # Revisar en que tabla se saca la informacion de la descripsion 
     observaciones = models.CharField(max_length=250, blank=True, null=True)
-    expediente = models.ForeignKey('portada.portada', models.DO_NOTHING, null= True, blank= True )
+    expediente = models.ForeignKey('portada.portada', on_delete=models.CASCADE, null= True, blank= True )
     VALORES_ESTATUS = [
         ('abierto', 'Abierto'),
         ('cerrado', 'Cerrado'),

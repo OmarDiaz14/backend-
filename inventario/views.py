@@ -2,7 +2,7 @@ from django.shortcuts import render
 from rest_framework import viewsets, permissions
 from .serializers import InventarioSerializer
 from .models import Inventario
-
+from rest_framework.permissions import IsAuthenticated
 
 # Create your views here.
 
@@ -10,5 +10,5 @@ from .models import Inventario
 
 class InventarioViewSet (viewsets.ModelViewSet):
     queryset = Inventario.objects.all()
-    permission_classes = [permissions.AllowAny]
+    permission_classes = [IsAuthenticated]
     serializer_class = InventarioSerializer

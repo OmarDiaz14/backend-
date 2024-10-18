@@ -19,18 +19,18 @@ class valores_docu (models.Model):
 class Catalogo(models.Model):
     id_catalogo = models.AutoField(primary_key= True)
     catalogo = models.CharField(max_length=50 )
-    archivo_tramite = models.DateField()
-    archivo_concentracion = models.DateField()
+    archivo_tramite = models.CharField(max_length=50)
+    archivo_concentracion = models.CharField(max_length=50)
     observaciones = models.CharField(db_column='observaciones ', max_length=250, blank=True, null=True)  # Field renamed to remove unsuitable characters. Field renamed because it ended with '_'.
-    destino_expe = models.ForeignKey('destino_expe', models.DO_NOTHING, null= False)
-    type_access = models.ForeignKey('type_access', models.DO_NOTHING, null= False)
+    destino_expe = models.ForeignKey('destino_expe',on_delete=models.CASCADE, null= False)
+    type_access = models.ForeignKey('type_access', on_delete=models.CASCADE, null= False)
     valores_documentales = models.ForeignKey('valores_docu', models.DO_NOTHING, null= False)
-    id_seccion = models.ForeignKey('cuadro.Seccion', models.DO_NOTHING, blank= False, null= True)
-    id_serie = models.ForeignKey('cuadro.Series', models.DO_NOTHING,blank= False, null= True)
-    id_subserie = models.ForeignKey('cuadro.SubSerie', models.DO_NOTHING,blank= True, null= True)
+    id_seccion = models.ForeignKey('cuadro.Seccion', on_delete=models.CASCADE, blank= False, null= True)
+    id_serie = models.ForeignKey('cuadro.Series', on_delete=models.CASCADE,blank= False, null= True)
+    id_subserie = models.ForeignKey('cuadro.SubSerie', on_delete=models.CASCADE,blank= True, null= True)
 
 
 
-
+on_delete=models.CASCADE
 
 # Create your models here.

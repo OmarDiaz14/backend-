@@ -81,7 +81,7 @@ REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.AllowAny',  # Permitir acceso a todos por defecto
     ],
-    'DEFAULT_AUTHENTICATION_CLASSES': [
+       'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework.authentication.TokenAuthentication',  # Agregar autenticación por token
     ],
 
