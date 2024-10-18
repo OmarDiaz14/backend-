@@ -5,15 +5,38 @@ from .serializers import UserSerializer
 #from django.contrib.auth.models import User
 from .models import User
 from rest_framework.authtoken.models import Token
-from rest_framework import status
+from rest_framework import status, viewsets, permissions
 from rest_framework.decorators import authentication_classes, permission_classes
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.authentication import TokenAuthentication
+from .models import Roles
+from .serializers import RolSerializer
 
 
 
 
 # Create your views here.
+
+class RolViewSet (viewsets.ModelViewSet):
+    queryset = Roles.objects.all()
+    permission_classes = [permissions.AllowAny]
+    serializer_class = RolSerializer
+
+
+
+class IsAdminOrSelf(permissions.BasePermission):
+    def has_object_permission(self, request, view, obj):
+        return request.user.is_staff or obj.id == request.user.id 
+    
+
+class UserViewSet(viewsets.ModelViewSet):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+    permission_classes = [permissions.IsAuthenticated, IsAdminOrSelf]
+
+
+
+
 @api_view (['POST'])
 def login (request):
     
